@@ -2,8 +2,8 @@
   <div class="container">
     <h1 class="text-center mt-5 mb-4">TodoList en Vue.Js</h1>
     <div class="mb-3">
-      <input v-model="newTodo" type="text" class="form-control" placeholder="Add new task">
-      <button  class="btn btn-primary mt-2" @click="addTodo(newTodo)" >Add Task</button>
+      <input v-model="newTodo" type="text" class="form-control" placeholder="Ajouter une nouvelle tâche">
+      <button  class="btn btn-primary mt-2" @click="addTodo(newTodo)" >Ajouter la tache</button>
     </div>
     <ul class="list-group">
       <li
@@ -14,6 +14,11 @@
         <button class="btn btn-danger cursor-pointer" @click="deleteTodo(index)">X</button>
       </li>
     </ul>
+
+    <button class="btn btn-success mt-3" @click="passJson()">Transmettre en JSON</button>
+    <div v-if="Jsonrevealed" class="mt-3">
+      Les éléments JSON sont dans la console
+    </div>
   </div>
 </template>
 
@@ -30,7 +35,8 @@ export default {
           { text: 'Learn Vue' },
           { text: 'Build something awesome' }
         ] as {text : string}[],
-        newTodo: ''
+        newTodo: '',
+        Jsonrevealed: false
       }
   },
     mounted() {
@@ -55,6 +61,10 @@ export default {
 
       // sauvegarde dans le local storage
       localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    passJson(){
+      console.log(JSON.stringify(this.todos), "JSON des todos");
+      this.Jsonrevealed = true;
     }
   },
 
