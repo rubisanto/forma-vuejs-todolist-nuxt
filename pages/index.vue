@@ -1,6 +1,7 @@
 <template>
-<div>
 
+<div>
+  <nuxt-link to="/about">About</nuxt-link>
   <TodoList></TodoList>
 </div>
 </template>

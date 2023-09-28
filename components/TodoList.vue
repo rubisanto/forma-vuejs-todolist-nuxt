@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <h1 class="text-center mt-5 mb-4">TodoList en Vue.Js</h1>
+    <div class="mb-3">
+      <input v-model="newTodo" type="text" class="form-control" placeholder="Add new task">
+      <button  class="btn btn-primary mt-2" @click="addTodo(newTodo)" >Add Task</button>
+    </div>
     <ul class="list-group">
       <li
         v-for="(todo, index) in todos"
@@ -25,14 +29,35 @@ export default {
           { text: 'Learn JavaScript' },
           { text: 'Learn Vue' },
           { text: 'Build something awesome' }
-        ] as {text : string}[]
+        ] as {text : string}[],
+        newTodo: ''
       }
   },
+    mounted() {
+  // Charger les todos depuis le localStorage si disponibles
+  const storeTodos = localStorage.getItem('todos');
+
+  if (storeTodos) {
+    this.todos = JSON.parse(storeTodos);
+
+  }
+},
   methods:{
     deleteTodo(index: number){
       this.todos.splice(index, 1);
+
+      // sauvegarde dans le local storage
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    addTodo (newTodo: string) {
+      this.todos.push({ text: newTodo })
+      this.newTodo = ''
+
+      // sauvegarde dans le local storage
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     }
-  }
+  },
+
 }
 
 </script>
