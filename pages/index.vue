@@ -2,6 +2,7 @@
 
 <div>
   <nuxt-link to="/about">About</nuxt-link>
+  <nuxt-link to="/blog">Blog</nuxt-link>
   <TodoList></TodoList>
 </div>
 </template>
