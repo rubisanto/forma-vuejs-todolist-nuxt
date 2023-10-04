@@ -5,7 +5,11 @@
     <h1>Les articles de blog</h1>
     <hr />
     <ul>
-      <li v-for="article in allArticles" :key="article.id">
+      <li
+        v-for="article in allArticles"
+        :key="article.id"
+        @mouseenter="consoleProporties(article)"
+      >
         <NuxtLink :to="`/blog/${article.id}`">
           <div class="card m-2">
             <h3>{{ article.title }}</h3>
@@ -47,6 +51,9 @@ export default Vue.extend({
       //   for (const article of this.allArticles) {
       //   console.log("ID : " + article.id + "type : " + typeof(article.id));
       // }
+    },
+    consoleProporties(article: Post) {
+      console.log('ID : ' + article.id + 'type : ' + typeof article.id)
     },
   },
 })
