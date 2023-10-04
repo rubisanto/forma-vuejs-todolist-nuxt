@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 interface Post {
   userId: number
   id: number
@@ -24,7 +25,7 @@ interface Post {
   body: string
 }
 
-export default {
+export default Vue.extend({
   name: 'BlogPage',
   data() {
     return {
@@ -48,7 +49,7 @@ export default {
       // }
     },
   },
-}
+})
 </script>
 
 <style scoped></style>

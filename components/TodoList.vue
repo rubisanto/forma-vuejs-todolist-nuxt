@@ -38,7 +38,8 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   name: 'TodoList',
   data() {
     return {
@@ -78,7 +79,7 @@ export default {
       this.Jsonrevealed = true
     },
   },
-}
+})
 </script>
 
 <style scoped>
